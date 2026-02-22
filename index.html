@@ -12,72 +12,70 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0e27;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #080810;
             color: #e0e0e0;
             overflow-x: hidden;
         }
 
-        /* Navigation */
-        nav {
-            background: linear-gradient(135deg, #1a1f3a 0%, #0f1424 100%);
+        .navbar {
+            background: #0a0a14;
+            border-bottom: 2px solid #c8f135;
             padding: 1rem 2rem;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            border-bottom: 2px solid #c8f135;
-            box-shadow: 0 4px 20px rgba(200, 241, 53, 0.1);
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .nav-brand {
-            font-size: 1.5rem;
-            font-weight: bold;
+        .navbar h1 {
             color: #c8f135;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-buttons {
             display: flex;
-            align-items: center;
             gap: 0.5rem;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #e0e0e0;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            background: rgba(200, 241, 53, 0.2);
+        .nav-btn {
+            background: transparent;
+            border: 1px solid #c8f135;
             color: #c8f135;
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border-radius: 4px;
         }
 
-        /* Main Container */
-        .container {
-            max-width: 1400px;
-            margin: 2rem auto;
-            padding: 0 2rem;
+        .nav-btn:hover {
+            background: #c8f135;
+            color: #080810;
         }
 
-        /* Page Sections */
+        .nav-btn.active {
+            background: #c8f135;
+            color: #080810;
+        }
+
         .page {
             display: none;
+            padding: 2rem;
+            animation: fadeIn 0.3s;
         }
 
         .page.active {
             display: block;
-            animation: fadeIn 0.3s;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* Overview Page */
@@ -89,36 +87,55 @@
         }
 
         .stat-card {
-            background: linear-gradient(135deg, #1a1f3a 0%, #252d4a 100%);
+            background: #0f0f1a;
+            border: 1px solid #1a1a2e;
+            border-left: 4px solid #c8f135;
             padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(200, 241, 53, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s;
+            border-radius: 8px;
+            transition: transform 0.3s;
         }
 
         .stat-card:hover {
             transform: translateY(-5px);
-            border-color: #c8f135;
-            box-shadow: 0 8px 30px rgba(200, 241, 53, 0.2);
+            border-left-color: #d4ff4d;
         }
 
         .stat-label {
-            font-size: 0.9rem;
-            color: #9ca3af;
+            color: #888;
+            font-size: 0.85rem;
             margin-bottom: 0.5rem;
         }
 
         .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
             color: #c8f135;
+            font-size: 2rem;
+            font-weight: 700;
         }
 
-        .stat-icon {
-            font-size: 2.5rem;
-            float: right;
-            opacity: 0.6;
+        .activity-feed {
+            background: #0f0f1a;
+            border: 1px solid #1a1a2e;
+            border-radius: 8px;
+            padding: 1.5rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .activity-item {
+            padding: 1rem;
+            border-bottom: 1px solid #1a1a2e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-time {
+            color: #666;
+            font-size: 0.8rem;
         }
 
         /* Agents Page */
@@ -129,11 +146,16 @@
         }
 
         .agent-card {
-            background: linear-gradient(135deg, #1a1f3a 0%, #252d4a 100%);
+            background: #0f0f1a;
+            border: 1px solid #1a1a2e;
+            border-radius: 8px;
             padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(200, 241, 53, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-5px);
+            border-color: #c8f135;
         }
 
         .agent-header {
@@ -144,730 +166,579 @@
         }
 
         .agent-name {
-            font-size: 1.2rem;
-            font-weight: bold;
             color: #c8f135;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .agent-status {
             padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
             font-weight: 600;
         }
 
-        .status-active { background: #10b981; color: white; }
-        .status-idle { background: #f59e0b; color: white; }
-        .status-offline { background: #ef4444; color: white; }
-
-        .agent-model {
-            margin-top: 1rem;
+        .status-active {
+            background: rgba(200, 241, 53, 0.2);
+            color: #c8f135;
         }
 
-        .agent-model label {
-            display: block;
-            font-size: 0.9rem;
-            color: #9ca3af;
-            margin-bottom: 0.5rem;
+        .status-idle {
+            background: rgba(136, 136, 136, 0.2);
+            color: #888;
+        }
+
+        .agent-model {
+            margin: 1rem 0;
         }
 
         .agent-model select {
             width: 100%;
             padding: 0.5rem;
-            background: #0a0e27;
+            background: #080810;
+            border: 1px solid #1a1a2e;
             color: #e0e0e0;
-            border: 1px solid rgba(200, 241, 53, 0.3);
-            border-radius: 6px;
-            font-size: 0.9rem;
+            border-radius: 4px;
+            cursor: pointer;
         }
 
-        .agent-stats {
+        .agent-cost {
+            color: #888;
+            font-size: 0.9rem;
             margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(200, 241, 53, 0.2);
         }
 
-        .agent-stat {
-            display: flex;
-            justify-content: space-between;
-            margin: 0.5rem 0;
-            font-size: 0.9rem;
+        .cost-value {
+            color: #c8f135;
+            font-weight: 600;
         }
-
-        .agent-stat-label { color: #9ca3af; }
-        .agent-stat-value { color: #c8f135; font-weight: 600; }
 
         /* Tasks Page */
-        .tasks-board {
+        .kanban-board {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
 
-        .task-column {
-            background: linear-gradient(135deg, #1a1f3a 0%, #252d4a 100%);
+        .kanban-column {
+            background: #0f0f1a;
+            border: 1px solid #1a1a2e;
+            border-radius: 8px;
             padding: 1rem;
-            border-radius: 12px;
-            border: 1px solid rgba(200, 241, 53, 0.2);
             min-height: 500px;
         }
 
         .column-header {
             font-size: 1.1rem;
-            font-weight: bold;
-            color: #c8f135;
+            font-weight: 600;
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(200, 241, 53, 0.3);
+            border-bottom: 2px solid #1a1a2e;
         }
 
+        .incoming-header { color: #4fc3f7; }
+        .progress-header { color: #ffb74d; }
+        .done-header { color: #81c784; }
+
         .task-card {
-            background: #0a0e27;
+            background: #080810;
+            border: 1px solid #1a1a2e;
+            border-radius: 6px;
             padding: 1rem;
             margin-bottom: 1rem;
-            border-radius: 8px;
-            border: 1px solid rgba(200, 241, 53, 0.2);
             cursor: move;
             transition: all 0.3s;
         }
 
         .task-card:hover {
             border-color: #c8f135;
-            box-shadow: 0 4px 15px rgba(200, 241, 53, 0.2);
+            transform: translateX(5px);
         }
 
         .task-title {
-            font-weight: 600;
             color: #e0e0e0;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .task-meta {
-            font-size: 0.85rem;
-            color: #9ca3af;
-            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
         }
 
-        .task-reassign {
-            width: 100%;
-            padding: 0.5rem;
-            background: #1a1f3a;
-            color: #e0e0e0;
-            border: 1px solid rgba(200, 241, 53, 0.3);
-            border-radius: 6px;
-            font-size: 0.85rem;
+        .task-priority {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .priority-high { background: rgba(244, 67, 54, 0.2); color: #f44336; }
+        .priority-medium { background: rgba(255, 183, 77, 0.2); color: #ffb74d; }
+        .priority-low { background: rgba(129, 199, 132, 0.2); color: #81c784; }
+
+        .task-assignee select {
+            background: #0f0f1a;
+            border: 1px solid #1a1a2e;
+            color: #c8f135;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
         }
 
         /* Logs Page */
         .logs-container {
-            background: linear-gradient(135deg, #1a1f3a 0%, #252d4a 100%);
+            background: #0f0f1a;
+            border: 1px solid #1a1a2e;
+            border-radius: 8px;
             padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(200, 241, 53, 0.2);
             max-height: 600px;
             overflow-y: auto;
+            font-family: 'Courier New', monospace;
         }
 
         .log-entry {
-            padding: 0.75rem;
-            margin-bottom: 0.5rem;
-            background: #0a0e27;
-            border-left: 3px solid #c8f135;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
+            padding: 0.5rem;
+            border-bottom: 1px solid #1a1a2e;
+            font-size: 0.85rem;
+        }
+
+        .log-entry:last-child {
+            border-bottom: none;
         }
 
         .log-timestamp {
-            color: #9ca3af;
+            color: #666;
             margin-right: 1rem;
         }
 
         .log-level {
             padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            border-radius: 3px;
             margin-right: 0.5rem;
+            font-weight: 600;
         }
 
-        .log-info { background: #3b82f6; color: white; }
-        .log-success { background: #10b981; color: white; }
-        .log-warning { background: #f59e0b; color: white; }
-        .log-error { background: #ef4444; color: white; }
+        .log-info { background: rgba(79, 195, 247, 0.2); color: #4fc3f7; }
+        .log-success { background: rgba(129, 199, 132, 0.2); color: #81c784; }
+        .log-warning { background: rgba(255, 183, 77, 0.2); color: #ffb74d; }
+        .log-error { background: rgba(244, 67, 54, 0.2); color: #f44336; }
 
-        .log-message { color: #e0e0e0; }
-
-        /* Scrollbar */
+        /* Scrollbar Styling */
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #1a1f3a;
+            background: #0f0f1a;
         }
 
         ::-webkit-scrollbar-thumb {
             background: #c8f135;
-            border-radius: 5px;
+            border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #a8d125;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .tasks-board {
-                grid-template-columns: 1fr;
-            }
-            
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .nav-links {
-                flex-wrap: wrap;
-            }
+            background: #d4ff4d;
         }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-brand">
-            🎯 Mission Control v3
+    <nav class="navbar">
+        <h1>⚡ MISSION CONTROL</h1>
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="showPage('overview')">Overview</button>
+            <button class="nav-btn" onclick="showPage('agents')">Agents</button>
+            <button class="nav-btn" onclick="showPage('tasks')">Tasks</button>
+            <button class="nav-btn" onclick="showPage('logs')">Logs</button>
         </div>
-        <ul class="nav-links">
-            <li><a href="#" class="nav-link active" data-page="overview">Overview</a></li>
-            <li><a href="#" class="nav-link" data-page="agents">Agents</a></li>
-            <li><a href="#" class="nav-link" data-page="tasks">Tasks</a></li>
-            <li><a href="#" class="nav-link" data-page="logs">Logs</a></li>
-        </ul>
     </nav>
 
-    <div class="container">
-        <!-- Overview Page -->
-        <div id="overview" class="page active">
-            <h1 style="color: #c8f135; margin-bottom: 2rem;">System Overview</h1>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">🤖</div>
-                    <div class="stat-label">Active Agents</div>
-                    <div class="stat-value" id="activeAgents">6</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">📋</div>
-                    <div class="stat-label">Total Tasks</div>
-                    <div class="stat-value" id="totalTasks">24</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">⚡</div>
-                    <div class="stat-label">In Progress</div>
-                    <div class="stat-value" id="inProgressTasks">8</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">✅</div>
-                    <div class="stat-label">Completed Today</div>
-                    <div class="stat-value" id="completedToday">12</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">💰</div>
-                    <div class="stat-label">Total Cost</div>
-                    <div class="stat-value" id="totalCost">$23.47</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">⏱️</div>
-                    <div class="stat-label">Uptime</div>
-                    <div class="stat-value" id="uptime">99.9%</div>
-                </div>
+    <!-- Overview Page -->
+    <div id="overview" class="page active">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Active Agents</div>
+                <div class="stat-value">6</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Tasks Running</div>
+                <div class="stat-value">12</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Cost</div>
+                <div class="stat-value">$24.35</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Uptime</div>
+                <div class="stat-value">99.8%</div>
             </div>
         </div>
 
-        <!-- Agents Page -->
-        <div id="agents" class="page">
-            <h1 style="color: #c8f135; margin-bottom: 2rem;">Agent Fleet</h1>
-            <div class="agents-grid">
-                <div class="agent-card">
-                    <div class="agent-header">
-                        <div class="agent-name">🎯 Main Agent</div>
-                        <span class="agent-status status-active">Active</span>
-                    </div>
-                    <div class="agent-model">
-                        <label>LLM Model</label>
-                        <select>
-                            <option selected>anthropic/claude-sonnet-4-5</option>
-                            <option>anthropic/claude-opus-4</option>
-                            <option>openai/gpt-4-turbo</option>
-                            <option>google/gemini-2.0-flash-exp</option>
-                        </select>
-                    </div>
-                    <div class="agent-stats">
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Tasks Completed</span>
-                            <span class="agent-stat-value">47</span>
-                        </div>
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Cost (24h)</span>
-                            <span class="agent-stat-value">$8.23</span>
-                        </div>
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Avg Response Time</span>
-                            <span class="agent-stat-value">2.3s</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="agent-card">
-                    <div class="agent-header">
-                        <div class="agent-name">👷 Builder Agent</div>
-                        <span class="agent-status status-active">Active</span>
-                    </div>
-                    <div class="agent-model">
-                        <label>LLM Model</label>
-                        <select>
-                            <option selected>anthropic/claude-sonnet-4-5</option>
-                            <option>anthropic/claude-opus-4</option>
-                            <option>openai/gpt-4-turbo</option>
-                            <option>google/gemini-2.0-flash-exp</option>
-                        </select>
-                    </div>
-                    <div class="agent-stats">
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Tasks Completed</span>
-                            <span class="agent-stat-value">32</span>
-                        </div>
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Cost (24h)</span>
-                            <span class="agent-stat-value">$5.67</span>
-                        </div>
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Avg Response Time</span>
-                            <span class="agent-stat-value">3.1s</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="agent-card">
-                    <div class="agent-header">
-                        <div class="agent-name">⚙️ DevOps Agent</div>
-                        <span class="agent-status status-idle">Idle</span>
-                    </div>
-                    <div class="agent-model">
-                        <label>LLM Model</label>
-                        <select>
-                            <option selected>anthropic/claude-sonnet-4-5</option>
-                            <option>anthropic/claude-opus-4</option>
-                            <option>openai/gpt-4-turbo</option>
-                            <option>google/gemini-2.0-flash-exp</option>
-                        </select>
-                    </div>
-                    <div class="agent-stats">
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Tasks Completed</span>
-                            <span class="agent-stat-value">18</span>
-                        </div>
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Cost (24h)</span>
-                            <span class="agent-stat-value">$3.45</span>
-                        </div>
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Avg Response Time</span>
-                            <span class="agent-stat-value">1.8s</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="agent-card">
-                    <div class="agent-header">
-                        <div class="agent-name">🔬 Researcher Agent</div>
-                        <span class="agent-status status-active">Active</span>
-                    </div>
-                    <div class="agent-model">
-                        <label>LLM Model</label>
-                        <select>
-                            <option selected>anthropic/claude-sonnet-4-5</option>
-                            <option>anthropic/claude-opus-4</option>
-                            <option>openai/gpt-4-turbo</option>
-                            <option>google/gemini-2.0-flash-exp</option>
-                        </select>
-                    </div>
-                    <div class="agent-stats">
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Tasks Completed</span>
-                            <span class="agent-stat-value">29</span>
-                        </div>
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Cost (24h)</span>
-                            <span class="agent-stat-value">$4.12</span>
-                        </div>
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Avg Response Time</span>
-                            <span class="agent-stat-value">2.7s</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="agent-card">
-                    <div class="agent-header">
-                        <div class="agent-name">🎨 Creative Agent</div>
-                        <span class="agent-status status-idle">Idle</span>
-                    </div>
-                    <div class="agent-model">
-                        <label>LLM Model</label>
-                        <select>
-                            <option selected>anthropic/claude-sonnet-4-5</option>
-                            <option>anthropic/claude-opus-4</option>
-                            <option>openai/gpt-4-turbo</option>
-                            <option>google/gemini-2.0-flash-exp</option>
-                        </select>
-                    </div>
-                    <div class="agent-stats">
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Tasks Completed</span>
-                            <span class="agent-stat-value">15</span>
-                        </div>
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Cost (24h)</span>
-                            <span class="agent-stat-value">$2.34</span>
-                        </div>
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Avg Response Time</span>
-                            <span class="agent-stat-value">3.4s</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="agent-card">
-                    <div class="agent-header">
-                        <div class="agent-name">📱 Mobile Agent</div>
-                        <span class="agent-status status-offline">Offline</span>
-                    </div>
-                    <div class="agent-model">
-                        <label>LLM Model</label>
-                        <select>
-                            <option selected>anthropic/claude-sonnet-4-5</option>
-                            <option>anthropic/claude-opus-4</option>
-                            <option>openai/gpt-4-turbo</option>
-                            <option>google/gemini-2.0-flash-exp</option>
-                        </select>
-                    </div>
-                    <div class="agent-stats">
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Tasks Completed</span>
-                            <span class="agent-stat-value">11</span>
-                        </div>
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Cost (24h)</span>
-                            <span class="agent-stat-value">$1.89</span>
-                        </div>
-                        <div class="agent-stat">
-                            <span class="agent-stat-label">Avg Response Time</span>
-                            <span class="agent-stat-value">2.9s</span>
-                        </div>
-                    </div>
-                </div>
+        <h2 style="color: #c8f135; margin-bottom: 1rem;">Activity Feed</h2>
+        <div class="activity-feed">
+            <div class="activity-item">
+                <span>Builder Agent completed deployment task</span>
+                <span class="activity-time">2 min ago</span>
+            </div>
+            <div class="activity-item">
+                <span>DevOps Agent started infrastructure audit</span>
+                <span class="activity-time">5 min ago</span>
+            </div>
+            <div class="activity-item">
+                <span>Researcher Agent generated report</span>
+                <span class="activity-time">12 min ago</span>
+            </div>
+            <div class="activity-item">
+                <span>Creative Agent updated design assets</span>
+                <span class="activity-time">18 min ago</span>
+            </div>
+            <div class="activity-item">
+                <span>Mobile Agent fixed UI bug</span>
+                <span class="activity-time">23 min ago</span>
+            </div>
+            <div class="activity-item">
+                <span>Main Agent processed user request</span>
+                <span class="activity-time">30 min ago</span>
             </div>
         </div>
+    </div>
 
-        <!-- Tasks Page -->
-        <div id="tasks" class="page">
-            <h1 style="color: #c8f135; margin-bottom: 2rem;">Task Board</h1>
-            <div class="tasks-board">
-                <div class="task-column">
-                    <div class="column-header">📥 Incoming</div>
-                    <div class="task-card">
-                        <div class="task-title">Analyze crypto market trends</div>
-                        <div class="task-meta">Assigned to: Main Agent • Priority: High</div>
-                        <select class="task-reassign">
-                            <option>Reassign to...</option>
-                            <option>Main Agent</option>
-                            <option>Builder Agent</option>
-                            <option>DevOps Agent</option>
-                            <option>Researcher Agent</option>
-                            <option>Creative Agent</option>
-                            <option>Mobile Agent</option>
-                        </select>
-                    </div>
-                    <div class="task-card">
-                        <div class="task-title">Deploy new monitoring dashboard</div>
-                        <div class="task-meta">Assigned to: DevOps Agent • Priority: Medium</div>
-                        <select class="task-reassign">
-                            <option>Reassign to...</option>
-                            <option>Main Agent</option>
-                            <option>Builder Agent</option>
-                            <option>DevOps Agent</option>
-                            <option>Researcher Agent</option>
-                            <option>Creative Agent</option>
-                            <option>Mobile Agent</option>
-                        </select>
-                    </div>
-                    <div class="task-card">
-                        <div class="task-title">Design new UI mockups</div>
-                        <div class="task-meta">Assigned to: Creative Agent • Priority: Low</div>
-                        <select class="task-reassign">
-                            <option>Reassign to...</option>
-                            <option>Main Agent</option>
-                            <option>Builder Agent</option>
-                            <option>DevOps Agent</option>
-                            <option>Researcher Agent</option>
-                            <option>Creative Agent</option>
-                            <option>Mobile Agent</option>
+    <!-- Agents Page -->
+    <div id="agents" class="page">
+        <div class="agents-grid">
+            <div class="agent-card">
+                <div class="agent-header">
+                    <div class="agent-name">Main Agent</div>
+                    <div class="agent-status status-active">ACTIVE</div>
+                </div>
+                <div class="agent-model">
+                    <select>
+                        <option>Claude Sonnet 4.5</option>
+                        <option>GPT-4 Turbo</option>
+                        <option>Claude Opus 3.5</option>
+                    </select>
+                </div>
+                <div class="agent-cost">Total Cost: <span class="cost-value">$8.42</span></div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <div class="agent-name">Builder Agent</div>
+                    <div class="agent-status status-active">ACTIVE</div>
+                </div>
+                <div class="agent-model">
+                    <select>
+                        <option>Claude Sonnet 4.5</option>
+                        <option>GPT-4 Turbo</option>
+                        <option>Claude Opus 3.5</option>
+                    </select>
+                </div>
+                <div class="agent-cost">Total Cost: <span class="cost-value">$5.21</span></div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <div class="agent-name">DevOps Agent</div>
+                    <div class="agent-status status-active">ACTIVE</div>
+                </div>
+                <div class="agent-model">
+                    <select>
+                        <option>Claude Sonnet 4.5</option>
+                        <option>GPT-4 Turbo</option>
+                        <option>Claude Opus 3.5</option>
+                    </select>
+                </div>
+                <div class="agent-cost">Total Cost: <span class="cost-value">$3.67</span></div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <div class="agent-name">Researcher Agent</div>
+                    <div class="agent-status status-idle">IDLE</div>
+                </div>
+                <div class="agent-model">
+                    <select>
+                        <option>Claude Sonnet 4.5</option>
+                        <option>GPT-4 Turbo</option>
+                        <option>Claude Opus 3.5</option>
+                    </select>
+                </div>
+                <div class="agent-cost">Total Cost: <span class="cost-value">$4.18</span></div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <div class="agent-name">Creative Agent</div>
+                    <div class="agent-status status-active">ACTIVE</div>
+                </div>
+                <div class="agent-model">
+                    <select>
+                        <option>Claude Sonnet 4.5</option>
+                        <option>GPT-4 Turbo</option>
+                        <option>Claude Opus 3.5</option>
+                    </select>
+                </div>
+                <div class="agent-cost">Total Cost: <span class="cost-value">$2.87</span></div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <div class="agent-name">Mobile Agent</div>
+                    <div class="agent-status status-idle">IDLE</div>
+                </div>
+                <div class="agent-model">
+                    <select>
+                        <option>Claude Sonnet 4.5</option>
+                        <option>GPT-4 Turbo</option>
+                        <option>Claude Opus 3.5</option>
+                    </select>
+                </div>
+                <div class="agent-cost">Total Cost: <span class="cost-value">$1.23</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tasks Page -->
+    <div id="tasks" class="page">
+        <div class="kanban-board">
+            <div class="kanban-column">
+                <div class="column-header incoming-header">📥 Incoming</div>
+                <div class="task-card">
+                    <div class="task-title">API Integration Review</div>
+                    <div class="task-meta">
+                        <span class="task-priority priority-high">HIGH</span>
+                        <select class="task-assignee">
+                            <option>Main</option>
+                            <option>Builder</option>
+                            <option>DevOps</option>
+                            <option>Researcher</option>
+                            <option>Creative</option>
+                            <option>Mobile</option>
                         </select>
                     </div>
                 </div>
-
-                <div class="task-column">
-                    <div class="column-header">⚡ In Progress</div>
-                    <div class="task-card">
-                        <div class="task-title">Build NEXUS platform MVP</div>
-                        <div class="task-meta">Assigned to: Builder Agent • Priority: High</div>
-                        <select class="task-reassign">
-                            <option>Reassign to...</option>
-                            <option>Main Agent</option>
-                            <option>Builder Agent</option>
-                            <option>DevOps Agent</option>
-                            <option>Researcher Agent</option>
-                            <option>Creative Agent</option>
-                            <option>Mobile Agent</option>
-                        </select>
-                    </div>
-                    <div class="task-card">
-                        <div class="task-title">Research DePIN protocols</div>
-                        <div class="task-meta">Assigned to: Researcher Agent • Priority: High</div>
-                        <select class="task-reassign">
-                            <option>Reassign to...</option>
-                            <option>Main Agent</option>
-                            <option>Builder Agent</option>
-                            <option>DevOps Agent</option>
-                            <option>Researcher Agent</option>
-                            <option>Creative Agent</option>
-                            <option>Mobile Agent</option>
-                        </select>
-                    </div>
-                    <div class="task-card">
-                        <div class="task-title">Optimize database queries</div>
-                        <div class="task-meta">Assigned to: DevOps Agent • Priority: Medium</div>
-                        <select class="task-reassign">
-                            <option>Reassign to...</option>
-                            <option>Main Agent</option>
-                            <option>Builder Agent</option>
-                            <option>DevOps Agent</option>
-                            <option>Researcher Agent</option>
-                            <option>Creative Agent</option>
-                            <option>Mobile Agent</option>
-                        </select>
-                    </div>
-                    <div class="task-card">
-                        <div class="task-title">Mobile app prototype</div>
-                        <div class="task-meta">Assigned to: Mobile Agent • Priority: Medium</div>
-                        <select class="task-reassign">
-                            <option>Reassign to...</option>
-                            <option>Main Agent</option>
-                            <option>Builder Agent</option>
-                            <option>DevOps Agent</option>
-                            <option>Researcher Agent</option>
-                            <option>Creative Agent</option>
-                            <option>Mobile Agent</option>
+                <div class="task-card">
+                    <div class="task-title">Security Audit</div>
+                    <div class="task-meta">
+                        <span class="task-priority priority-high">HIGH</span>
+                        <select class="task-assignee">
+                            <option selected>DevOps</option>
+                            <option>Main</option>
+                            <option>Builder</option>
+                            <option>Researcher</option>
+                            <option>Creative</option>
+                            <option>Mobile</option>
                         </select>
                     </div>
                 </div>
-
-                <div class="task-column">
-                    <div class="column-header">✅ Done</div>
-                    <div class="task-card">
-                        <div class="task-title">Crypto research findings report</div>
-                        <div class="task-meta">Completed by: Researcher Agent • 6h ago</div>
-                        <select class="task-reassign">
-                            <option>Reassign to...</option>
-                            <option>Main Agent</option>
-                            <option>Builder Agent</option>
-                            <option>DevOps Agent</option>
-                            <option>Researcher Agent</option>
-                            <option>Creative Agent</option>
-                            <option>Mobile Agent</option>
-                        </select>
-                    </div>
-                    <div class="task-card">
-                        <div class="task-title">NEXUS app concept document</div>
-                        <div class="task-meta">Completed by: Builder Agent • 4h ago</div>
-                        <select class="task-reassign">
-                            <option>Reassign to...</option>
-                            <option>Main Agent</option>
-                            <option>Builder Agent</option>
-                            <option>DevOps Agent</option>
-                            <option>Researcher Agent</option>
-                            <option>Creative Agent</option>
-                            <option>Mobile Agent</option>
-                        </select>
-                    </div>
-                    <div class="task-card">
-                        <div class="task-title">PowerPoint presentation</div>
-                        <div class="task-meta">Completed by: Creative Agent • 2h ago</div>
-                        <select class="task-reassign">
-                            <option>Reassign to...</option>
-                            <option>Main Agent</option>
-                            <option>Builder Agent</option>
-                            <option>DevOps Agent</option>
-                            <option>Researcher Agent</option>
-                            <option>Creative Agent</option>
-                            <option>Mobile Agent</option>
-                        </select>
-                    </div>
-                    <div class="task-card">
-                        <div class="task-title">Server infrastructure audit</div>
-                        <div class="task-meta">Completed by: DevOps Agent • 8h ago</div>
-                        <select class="task-reassign">
-                            <option>Reassign to...</option>
-                            <option>Main Agent</option>
-                            <option>Builder Agent</option>
-                            <option>DevOps Agent</option>
-                            <option>Researcher Agent</option>
-                            <option>Creative Agent</option>
-                            <option>Mobile Agent</option>
+                <div class="task-card">
+                    <div class="task-title">Documentation Update</div>
+                    <div class="task-meta">
+                        <span class="task-priority priority-low">LOW</span>
+                        <select class="task-assignee">
+                            <option selected>Researcher</option>
+                            <option>Main</option>
+                            <option>Builder</option>
+                            <option>DevOps</option>
+                            <option>Creative</option>
+                            <option>Mobile</option>
                         </select>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Logs Page -->
-        <div id="logs" class="page">
-            <h1 style="color: #c8f135; margin-bottom: 2rem;">System Logs</h1>
-            <div class="logs-container">
-                <div class="log-entry">
-                    <span class="log-timestamp">2026-02-22 17:05:32</span>
-                    <span class="log-level log-success">SUCCESS</span>
-                    <span class="log-message">Mission Control v3 deployed successfully</span>
+            <div class="kanban-column">
+                <div class="column-header progress-header">⚡ In Progress</div>
+                <div class="task-card">
+                    <div class="task-title">Dashboard Redesign</div>
+                    <div class="task-meta">
+                        <span class="task-priority priority-medium">MEDIUM</span>
+                        <select class="task-assignee">
+                            <option selected>Creative</option>
+                            <option>Main</option>
+                            <option>Builder</option>
+                            <option>DevOps</option>
+                            <option>Researcher</option>
+                            <option>Mobile</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="log-entry">
-                    <span class="log-timestamp">2026-02-22 16:48:21</span>
-                    <span class="log-level log-info">INFO</span>
-                    <span class="log-message">Builder Agent completed task: NEXUS platform MVP</span>
+                <div class="task-card">
+                    <div class="task-title">Mobile App Optimization</div>
+                    <div class="task-meta">
+                        <span class="task-priority priority-high">HIGH</span>
+                        <select class="task-assignee">
+                            <option selected>Mobile</option>
+                            <option>Main</option>
+                            <option>Builder</option>
+                            <option>DevOps</option>
+                            <option>Researcher</option>
+                            <option>Creative</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="log-entry">
-                    <span class="log-timestamp">2026-02-22 16:32:15</span>
-                    <span class="log-level log-info">INFO</span>
-                    <span class="log-message">Researcher Agent started task: DePIN protocol analysis</span>
+                <div class="task-card">
+                    <div class="task-title">Database Migration</div>
+                    <div class="task-meta">
+                        <span class="task-priority priority-high">HIGH</span>
+                        <select class="task-assignee">
+                            <option selected>Builder</option>
+                            <option>Main</option>
+                            <option>DevOps</option>
+                            <option>Researcher</option>
+                            <option>Creative</option>
+                            <option>Mobile</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="log-entry">
-                    <span class="log-timestamp">2026-02-22 15:58:03</span>
-                    <span class="log-level log-warning">WARNING</span>
-                    <span class="log-message">Mobile Agent: Connection timeout, retrying...</span>
+            </div>
+
+            <div class="kanban-column">
+                <div class="column-header done-header">✅ Done</div>
+                <div class="task-card">
+                    <div class="task-title">CI/CD Pipeline Setup</div>
+                    <div class="task-meta">
+                        <span class="task-priority priority-high">HIGH</span>
+                        <select class="task-assignee">
+                            <option selected>DevOps</option>
+                            <option>Main</option>
+                            <option>Builder</option>
+                            <option>Researcher</option>
+                            <option>Creative</option>
+                            <option>Mobile</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="log-entry">
-                    <span class="log-timestamp">2026-02-22 15:45:17</span>
-                    <span class="log-level log-success">SUCCESS</span>
-                    <span class="log-message">DevOps Agent: Database optimization completed (42% improvement)</span>
+                <div class="task-card">
+                    <div class="task-title">Market Research Report</div>
+                    <div class="task-meta">
+                        <span class="task-priority priority-medium">MEDIUM</span>
+                        <select class="task-assignee">
+                            <option selected>Researcher</option>
+                            <option>Main</option>
+                            <option>Builder</option>
+                            <option>DevOps</option>
+                            <option>Creative</option>
+                            <option>Mobile</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="log-entry">
-                    <span class="log-timestamp">2026-02-22 15:23:44</span>
-                    <span class="log-level log-info">INFO</span>
-                    <span class="log-message">Main Agent: Processing user request</span>
-                </div>
-                <div class="log-entry">
-                    <span class="log-timestamp">2026-02-22 14:55:28</span>
-                    <span class="log-level log-success">SUCCESS</span>
-                    <span class="log-message">Creative Agent: PowerPoint generation completed</span>
-                </div>
-                <div class="log-entry">
-                    <span class="log-timestamp">2026-02-22 14:31:09</span>
-                    <span class="log-level log-info">INFO</span>
-                    <span class="log-message">System health check: All agents operational</span>
-                </div>
-                <div class="log-entry">
-                    <span class="log-timestamp">2026-02-22 13:42:56</span>
-                    <span class="log-level log-error">ERROR</span>
-                    <span class="log-message">Mobile Agent: Failed to connect to API endpoint (retrying...)</span>
-                </div>
-                <div class="log-entry">
-                    <span class="log-timestamp">2026-02-22 13:15:33</span>
-                    <span class="log-level log-info">INFO</span>
-                    <span class="log-message">Researcher Agent: Crypto market analysis started</span>
-                </div>
-                <div class="log-entry">
-                    <span class="log-timestamp">2026-02-22 12:58:21</span>
-                    <span class="log-level log-success">SUCCESS</span>
-                    <span class="log-message">Mission Control v2: Status update published</span>
-                </div>
-                <div class="log-entry">
-                    <span class="log-timestamp">2026-02-22 12:31:07</span>
-                    <span class="log-level log-info">INFO</span>
-                    <span class="log-message">DevOps Agent: Server monitoring active</span>
+                <div class="task-card">
+                    <div class="task-title">Brand Identity Design</div>
+                    <div class="task-meta">
+                        <span class="task-priority priority-medium">MEDIUM</span>
+                        <select class="task-assignee">
+                            <option selected>Creative</option>
+                            <option>Main</option>
+                            <option>Builder</option>
+                            <option>DevOps</option>
+                            <option>Researcher</option>
+                            <option>Mobile</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Logs Page -->
+    <div id="logs" class="page">
+        <div class="logs-container">
+            <div class="log-entry">
+                <span class="log-timestamp">2026-02-22 17:36:42</span>
+                <span class="log-level log-success">SUCCESS</span>
+                <span>Builder Agent: Deployment completed successfully</span>
+            </div>
+            <div class="log-entry">
+                <span class="log-timestamp">2026-02-22 17:35:18</span>
+                <span class="log-level log-info">INFO</span>
+                <span>DevOps Agent: Starting infrastructure audit</span>
+            </div>
+            <div class="log-entry">
+                <span class="log-timestamp">2026-02-22 17:34:02</span>
+                <span class="log-level log-success">SUCCESS</span>
+                <span>Researcher Agent: Report generation complete</span>
+            </div>
+            <div class="log-entry">
+                <span class="log-timestamp">2026-02-22 17:33:45</span>
+                <span class="log-level log-info">INFO</span>
+                <span>Creative Agent: Updated design assets</span>
+            </div>
+            <div class="log-entry">
+                <span class="log-timestamp">2026-02-22 17:32:21</span>
+                <span class="log-level log-warning">WARNING</span>
+                <span>Mobile Agent: Performance degradation detected</span>
+            </div>
+            <div class="log-entry">
+                <span class="log-timestamp">2026-02-22 17:31:07</span>
+                <span class="log-level log-success">SUCCESS</span>
+                <span>Mobile Agent: Bug fix applied and tested</span>
+            </div>
+            <div class="log-entry">
+                <span class="log-timestamp">2026-02-22 17:30:33</span>
+                <span class="log-level log-info">INFO</span>
+                <span>Main Agent: Processing user request</span>
+            </div>
+            <div class="log-entry">
+                <span class="log-timestamp">2026-02-22 17:29:12</span>
+                <span class="log-level log-success">SUCCESS</span>
+                <span>Builder Agent: Code review completed</span>
+            </div>
+            <div class="log-entry">
+                <span class="log-timestamp">2026-02-22 17:28:44</span>
+                <span class="log-level log-info">INFO</span>
+                <span>DevOps Agent: Backup process initiated</span>
+            </div>
+            <div class="log-entry">
+                <span class="log-timestamp">2026-02-22 17:27:09</span>
+                <span class="log-level log-error">ERROR</span>
+                <span>Creative Agent: Asset compilation failed - retrying</span>
+            </div>
+            <div class="log-entry">
+                <span class="log-timestamp">2026-02-22 17:26:31</span>
+                <span class="log-level log-success">SUCCESS</span>
+                <span>Researcher Agent: Data collection complete</span>
+            </div>
+            <div class="log-entry">
+                <span class="log-timestamp">2026-02-22 17:25:17</span>
+                <span class="log-level log-info">INFO</span>
+                <span>Main Agent: Session initialized</span>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Navigation
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Update active nav link
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-                
-                // Show corresponding page
-                const pageId = link.dataset.page;
-                document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-                document.getElementById(pageId).classList.add('active');
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
             });
-        });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
 
         // Simulate real-time updates
-        function updateStats() {
-            const stats = {
-                activeAgents: Math.floor(Math.random() * 2) + 5,
-                totalTasks: Math.floor(Math.random() * 10) + 20,
-                inProgressTasks: Math.floor(Math.random() * 5) + 5,
-                completedToday: Math.floor(Math.random() * 8) + 10
-            };
-            
-            document.getElementById('activeAgents').textContent = stats.activeAgents;
-            document.getElementById('totalTasks').textContent = stats.totalTasks;
-            document.getElementById('inProgressTasks').textContent = stats.inProgressTasks;
-            document.getElementById('completedToday').textContent = stats.completedToday;
-        }
-
-        // Update stats every 5 seconds
-        setInterval(updateStats, 5000);
-
-        // Add log entry simulation
-        function addLogEntry() {
-            const logs = document.querySelector('.logs-container');
-            const levels = ['info', 'success', 'warning', 'error'];
-            const messages = [
-                'Task completed successfully',
-                'Agent processing request',
-                'Connection established',
-                'Database query optimized',
-                'API call successful'
-            ];
-            
-            const level = levels[Math.floor(Math.random() * levels.length)];
-            const message = messages[Math.floor(Math.random() * messages.length)];
-            const now = new Date().toISOString().replace('T', ' ').substring(0, 19);
-            
-            const entry = document.createElement('div');
-            entry.className = 'log-entry';
-            entry.innerHTML = `
-                <span class="log-timestamp">${now}</span>
-                <span class="log-level log-${level}">${level.toUpperCase()}</span>
-                <span class="log-message">${message}</span>
-            `;
-            
-            logs.insertBefore(entry, logs.firstChild);
-            
-            // Keep only last 20 entries
-            while (logs.children.length > 20) {
-                logs.removeChild(logs.lastChild);
+        setInterval(() => {
+            // Update random stat values
+            const statValues = document.querySelectorAll('.stat-value');
+            if (statValues[1]) {
+                const currentTasks = parseInt(statValues[1].textContent);
+                statValues[1].textContent = Math.max(8, Math.min(15, currentTasks + Math.floor(Math.random() * 3) - 1));
             }
-        }
-
-        // Add new log every 10 seconds
-        setInterval(addLogEntry, 10000);
+        }, 5000);
     </script>
 </body>
 </html>
